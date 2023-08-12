@@ -21,6 +21,10 @@
       "@nx-nextjs-tailwind-storybook/data-access/data-access": [
         "libs/data-access/data-access/src/index.ts"
       ],
+      "@nx-nextjs-tailwind-storybook/feature": ["libs/feature/src/index.ts"],
+      "@nx-nextjs-tailwind-storybook/feature/server": [
+        "libs/feature/src/server.ts"
+      ],
       "@nx-nextjs-tailwind-storybook/ui": ["libs/ui/src/index.ts"]
     }
   },
