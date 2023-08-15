@@ -2,11 +2,85 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Profile implements Node & TimeStamps {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  firstName: String
+  lastName: String
+  email: String!
+}
+
+interface Node {
+  _id: ID!
+}
+
+interface TimeStamps {
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type LoginPayload {
+  authToken: String!
+  profile: Profile!
+}
+
 type Query {
   ping: String!
   port: Float!
+  whoAmI: User!
+  users(input: SearchUsersInput): [User!]!
+  user(input: SearchUserInput!): User
+}
+
+type User implements Node & TimeStamps {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  firstName: String!
+  lastName: String!
+  email: String!
+}
+
+input SearchUsersInput {
+  firstName: String
+  lastName: String
+  limit: Float = 10
+  offset: Float = 0
+}
+
+input SearchUserInput {
+  _id: String
+  firstName: String
+  lastName: String
+  email: String
 }
 
 type Mutation {
   echo(message: String!): String!
+  register(registerInput: CreateUserInput!): LoginPayload!
+  login(email: String!, password: String!): LoginPayload!
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(_id: ID!): User!
+}
+
+input CreateUserInput {
+  firstName: String!
+  lastName: String!
+  email: String!
+  password: String!
+}
+
+input UpdateUserInput {
+  firstName: String
+  lastName: String
+  email: String
+  password: String
+  _id: ID!
 }
