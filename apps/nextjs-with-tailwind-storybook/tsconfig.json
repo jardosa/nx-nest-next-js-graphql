@@ -28,7 +28,8 @@
     "**/*.js",
     "**/*.jsx",
     "next-env.d.ts",
-    "../../apps/nextjs-with-tailwind-storybook/.next/types/**/*.ts"
+    "../../apps/nextjs-with-tailwind-storybook/.next/types/**/*.ts",
+    "../../dist/apps/nextjs-with-tailwind-storybook/.next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",
